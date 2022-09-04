@@ -1,0 +1,293 @@
+// Author Data Base
+
+CREATE TABLE author(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+fullname TEXT,
+Age INTEGER,
+Inspired INTEGER);
+
+INSERT INTO author (Fullname, Age, Inspired) VALUES ( "H.P Lovecraft", 46, NULL);
+INSERT INTO author (Fullname, Age, Inspired) VALUES ( "Frank Herbert", 65, NULL);
+INSERT INTO author (Fullname, Age, Inspired) VALUES ( "J.R.R Tolkien", 81, NULL);
+INSERT INTO author (Fullname, Age, Inspired) VALUES ("George R. R. Martin",73, 3);
+INSERT INTO author (Fullname, Age, Inspired) VALUES ( "C.S Lewis", 64, 3);
+INSERT INTO author (Fullname, Age, Inspired) VALUES ( "Pierce Brown", 34, 2);
+INSERT INTO author (Fullname, Age, Inspired) VALUES ( "J.K Rowling", 57, 3);
+
+
+//Series of Books Data Base
+
+CREATE TABLE series(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT,
+date INTEGER,
+author_id INTEGER);
+
+INSERT INTO series (name, date, author_id) VALUES ( NULL, NULL,1);
+INSERT INTO series (name, date, author_id) VALUES ( "Dune Series", 1963, 2);
+INSERT INTO series (name, date, author_id) VALUES ( "The Pandora Sequence", 1965, 2);
+INSERT INTO series (name, date, author_id) VALUES ( "The ConSentiency series", 1958, 2);
+INSERT INTO series (name, date, author_id) VALUES ( "Middle Earth", 1937, 3);
+INSERT INTO series (name, date, author_id) VALUES ( "A Song of Ice and Fire", 1996, 4);
+INSERT INTO series (name, date, author_id) VALUES ( "Chronicles of Narnia", 1950,5);
+INSERT INTO series (name, date, author_id) VALUES ( "Cosmic Trilogy", 1938, 5);
+INSERT INTO series (name, date, author_id) VALUES ( "RED RISING SAGA" , 2014 ,6);
+INSERT INTO series (name, date, author_id) VALUES ( "Harry potter Series", 1997,7);
+INSERT INTO series (name, date, author_id) VALUES ( "Cormoran Strike Series", 2013,7);
+
+
+
+// Books Database
+
+CREATE TABLE books(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT,
+series_id INTEGER,
+author_id INTEGER);
+
+INSERT INTO books (name, series_id, author_id) VALUES ( "The Alchemist", NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ( "The Tomb", NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ( "Dagon", NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ( "A Reminiscence of Dr. Samuel Johnson", NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ( "Polaris", NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"Beyond the Wall of Sleep" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"Memory" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"Old Bugs" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Transition of Juan Romero" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The White Ship" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Doom that Came to Sarnath"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Statement of Randolph Carter"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Street" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Terrible Old Man" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Cats of Ulthar"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Tree" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"Celephaïs" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"From Beyond" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Temple" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"Nyarlathotep" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Picture in the House" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"Facts Concerning the Late Arthur Jermyn and His Family" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Nameless City" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Quest of Iranon" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Moon-Bog" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"Ex Oblivione"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Other Gods" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Outsider" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Music of Erich Zann"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"Sweet Ermengarde" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("Hypnos"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"What the Moon Brings"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	 	"Azathoth", NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"Herbert West–Reanimator" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Hound"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Lurking Fear" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Rats in the Walls" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Unnamable"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Festival" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Shunned House" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Horror at Red Hook" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"He"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"In the Vault" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"Cool Air" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Call of Cthulhu" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"Pickman's Model"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Strange High House in the Mist" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Silver Key" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	 "	The Dream-Quest of Unknown Kadath", NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Case of Charles Dexter Ward"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Colour Out of Space" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"The Descendant" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Very Old Folk"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("History of the Necronomicon"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Dunwich Horror"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (		"Ibid" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Whisperer in Darkness"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"	At the Mountains of Madness" , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Shadow over Innsmouth"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Dreams in the Witch House"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Thing on the Doorstep"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES (	"The Book"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Evil Clergyman"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("	The Shadow Out of Time"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Haunter of the Dark"	 , NULL,1);
+INSERT INTO books (name, series_id, author_id) VALUES ("Dune" ,2,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Dune Messiah" ,2,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Children of Dune" ,2,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("God Emperor of Dune" ,2,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Heretics of Dune" ,2,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Chapterhouse Dune" ,2,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Destination: Void" ,3,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Jesus Incident" ,3,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Lazarus Effect" ,3,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Ascension Factor" ,3,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("A Matter of Traces" ,4,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Whipping Star" ,4,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Tactful Saboteur" ,4,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Dosadi Experiment" ,4,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Survival of the Cunning" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "The Jonah and the Jap," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "Yellow Fire," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "Looking for Something?",NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Operation Syndrome," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "The Gone Dogs,",NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Packrat Planet," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Rat Race," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Occupation Force," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Nothing," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Cease Fire,"  ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Old Rambling House," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("You Take the High Road,"  ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "A Matter of Traces," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Missing Link," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Operation Haystack,"  ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Priests of Psi," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Egg and Ashes,"  ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("A-W-F Unlimited" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Try to Remember," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Mating Call" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Mindfield," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Mary Celeste Move," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Tactful Saboteur," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Greenslaves," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "Committee of the Whole",NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The GM Effect," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "Do I Wake or Dream?",NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Primitives" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Escape Felicity," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("By the Book," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Featherbedders," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Mind Bomb" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Seed Stock,"  ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Murder Will In," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Project 40" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Encounter in a Lonely Place," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Gambling Device," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Passage for Piano,"  ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Death of a City," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Come to the Party" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Songs of a Sentient Flute,"  ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Frogs and Scientists,"  ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Feathered Pigs," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Road to Dune," ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Daddy Box" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "The Yellow Coat",NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "The Cage",NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Illegitimate Stage" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("A Lesson in History" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "Wilfred",NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ( "The Iron Maiden",NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Wrong Cat" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Heat's On" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Little Window" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Waters of Kan-E" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Paul's Friend" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("Public Hearing" ,NULL,2);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Hobbit" ,5,3);
+INSERT INTO books (name, series_id, author_id) VALUES ("Lord of the rings-The fellowship of the ring" ,5,3);
+INSERT INTO books (name, series_id, author_id) VALUES ("Lord of the rings- Two Towers",5,3);
+INSERT INTO books (name, series_id, author_id) VALUES ("Lord of the rings- Return of the king" ,5,3);
+INSERT INTO books (name, series_id, author_id) VALUES ("Leaf by Niggle" ,NULL,3);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Lay of Aotrou and Itroun " ,NULL,3);
+INSERT INTO books (name, series_id, author_id) VALUES ("Farmer Giles of Ham " ,NULL,3);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Homecoming of Beorhtnoth Beorhthelm's Son " ,NULL,3);
+INSERT INTO books (name, series_id, author_id) VALUES ("Tree and Leaf" ,NULL,3);
+INSERT INTO books (name, series_id, author_id) VALUES (" Smith of Wootton Major" ,NULL,3);
+INSERT INTO books (name, series_id, author_id) VALUES ("A Game of thrones" ,6,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("A Clash of kings" ,6,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("A Storm of Swords" ,6,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("A Feast for Crows" ,6,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("A Dance with Dragons" ,6,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Dying of the Light" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Windhaven" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES (" Fevre Dream," ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Armageddon Rag" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Dead Man’s Hand" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES (" Lands of Ice and Fire" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("World of Ice and Fire" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("A Song for Lya " ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Songs of Stars and Shadows" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Sandkings" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Songs the Dead Men Sing" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Nightflyers" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Tuf Voyaging" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Portraits of His Children" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Quartet" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Starlady" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Shadow Twin" ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("Knight of the Seven Kingdoms " ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Ice Dragon " ,NULL,4);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Lion, the Witch, and the Wardrobe" ,7,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("Prince Caspian" ,7,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Voyage of the Dawn Treader" ,7,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Silver Chair" ,7,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Horse and His Boy" ,7,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Magician's Nephew" ,7,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Last Battle" ,7,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("Out of the Silent Planet" ,8,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("Perelandra " ,8,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("That Hideous Strength " ,8,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Pilgrim's Regress" ,NULL,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Screwtape Letters " ,NULL,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Great Divorce " ,NULL,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("Till We Have Faces" ,NULL,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Shoddy Lands " ,NULL,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("Ministering Angels" ,NULL,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("Screwtape Proposes a Toast " ,NULL,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Dark Tower" ,NULL,5);
+INSERT INTO books (name, series_id, author_id) VALUES ("Red Rising" ,9,6);
+INSERT INTO books (name, series_id, author_id) VALUES ("Golden Son" ,9,6);
+INSERT INTO books (name, series_id, author_id) VALUES ("Morning Star" ,9,6);
+INSERT INTO books (name, series_id, author_id) VALUES ("Iron Gold" ,9,6);
+INSERT INTO books (name, series_id, author_id) VALUES ("Dark Age" ,9,6);
+INSERT INTO books (name, series_id, author_id) VALUES ("Harry Potter and the Philosopher's Stone" ,10,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("Harry Potter and the Chamber of Secrets" ,10,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("Harry Potter and the Prisoner of Azkaban" ,10,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("Harry Potter and the Goblet of Fire" ,10,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("Harry Potter and the Order of the Phoenix" ,10,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("Harry Potter and the Half-Blood Prince" ,10,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("Harry Potter and the Deathly Hallows" ,10,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Cuckoo's Calling" ,11,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("The Silkworm" ,11,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("	Career of Evil" ,11,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("	Lethal White" ,11,7);
+INSERT INTO books (name, series_id, author_id) VALUES ("Troubled Blood" ,11,7);
+
+//Number of total books published per Author
+
+SELECT n.fullname, COUNT(books.name) as "All Books Published"
+FROM author as n
+JOIN books
+ON n.id = books.author_id
+GROUP BY n.fullname 
+ORDER BY COUNT(books.name) DESC;
+
+// Series of books written by an author along witht he number of books within each series.
+
+SELECT a.fullname as "Author", s.name as "Series Name", COUNT(s.name) as"Number of books in series", s.date
+FROM books as b
+JOIN author as a
+ON b.author_id = a.id
+INNER JOIN series as s
+ON b.series_id = s.id
+GROUP BY s.name
+ORDER BY a.fullname;
+
+// Total of books written that belong to a series and total of standalone books arranged by Author
+
+Select  fullname, count(fullname) as "number of books",
+CASE
+when series_id>0 then" Part of a series"
+else "Stand Alone books"
+end as bibliography
+FROM Books as b
+LEFT JOIN author as a
+ON b.author_id = a.id
+GROUP BY bibliography, A.FULLNAME
+ORDER BY a.fullname;
+
+//Authors matched by other authors that inspired them within this Database. 
+
+SELECT a.fullname as "Author", b.fullname as "Inspiration"
+FROM author as a
+LEFT JOIN author as b
+ON a.inspired= b.id;
