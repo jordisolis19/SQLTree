@@ -62,3 +62,5 @@ FROM BIT_DB.Spotifydata
 GROUP BY artist_name
 HAVING count(track_name)  > 1
 ORDER BY AVG(POPULARITY) DESC;
+
+6- Average Danceabilty of the top 5 most popular songs.
