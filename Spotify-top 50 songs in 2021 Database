@@ -1,0 +1,64 @@
+# For this project, I downloaded Spotify data from Kaggle.
+# Then I created a table to insert Spotify data into.
+# Finally, I performed analytics on the data using SQL. 
+
+#Creating the table: 
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+#Then I inserted the Spotify Data .csv into the table.
+
+#Next, I explored the data using the following SQL. 
+
+1- Most popular song
+
+SELECT artist_name, track_name
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc
+LIMIT 1;
+
+2- Songs with bellow average loudness
+
+SELECT artist_name, track_name
+FROM BIT_DB.Spotifydata
+WHERE loudness<(SELECT avg(loudness) FROM BIT_DB.Spotifydata);
+
+3- Top 5 longest songs
+
+SELECT artist_name, track_name, duration_ms
+FROM BIT_DB.Spotifydata
+ORDER BY duration_ms desc
+LIMIT 5;
+
+4- Best songs to hype up a party (Songs with both higher than average Daceability and Liveness)
+
+SELECT artist_name, track_name
+FROM BIT_DB.Spotifydata
+WHERE danceability > (SELECT AVG(danceability) FROM BIT_DB.Spotifydata)
+AND liveness > (SELECT AVG(liveness) FROM BIT_DB.Spotifydata);
+
+5- Artist with the highest song average poularity with more than 1 song in the table
+
+SELECT artist_name,count(track_name), AVG (POPULARITY)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+HAVING count(track_name)  > 1
+ORDER BY AVG(POPULARITY) DESC;
