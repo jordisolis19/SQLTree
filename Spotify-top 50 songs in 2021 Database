@@ -64,3 +64,17 @@ HAVING count(track_name)  > 1
 ORDER BY AVG(POPULARITY) DESC;
 
 6- Average Danceabilty of the top 5 most popular songs.
+
+WITH tempTABLE AS (SELECT danceability
+FROM Spotifydata
+ORDER BY popularity desc
+LIMIT 5)
+
+SELECT AVG(danceability) FROM tempTABLE;
+
+7- Artsit order by highest number of songs in this list
+
+SELECT artist_name, COUNT(track_name)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY COUNT(track_name)desc;
