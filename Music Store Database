@@ -1,0 +1,90 @@
+### In this project I used a Music Databse with 11 tables, each table with different conection to each-other. Then using SQLlite I solved for different query's
+(found bellow) utilizing joins, aggregates and many other SQL functions. ###
+
+
+#1.-Find Customers (their full names, customer ID, and country) who are not in the US. 
+
+SELECT Firstname, LastName, Customerid, Country
+FROM customers
+WHERE Country != "USA"
+ORDER BY Country
+
+
+#2.-Show only the Customers from Brazil.
+
+SELECT Firstname, LastName, Customerid, Country
+FROM customers
+WHERE Country = "Brazil"
+
+
+#3.-Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+
+SELECT Firstname, Lastname, Invoiceid, Invoicedate, Country
+FROM customers as c
+left JOIN Invoices as i
+ON c.Customerid  = i.Customerid 
+WHERE Country = "Brazil"
+Order by invoiceid
+
+
+#4.-Show the Employees who are Sales Agents.
+
+SELECT Employeeid, Firstname, Lastname, Title
+from EMPLOYEES
+WHERE Title LIKE '%sales%'
+
+
+#5.-Create a  list of countries we've worked for from the Invoice table.
+
+SELECT BillingCountry
+FROM Invoices
+Group by BillingCountry
+
+#6.-Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+
+WITH Salebyemployee AS (
+SELECT SupportRepid, invoiceid
+FROM Invoices as i
+JOIN Customers as c
+on  i.Customerid= c.Customerid)
+
+SELECT Firstname, Lastname, Invoiceid
+FROM Employees as e 
+JOIN Salebyemployee as s
+ON e.Employeeid = s.SupportRepid
+
+
+#7.-Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+
+WITH invoiceinfo AS (
+SELECT * 
+FROM Invoices as inv
+JOIN Invoice_items as item
+ON inv.invoiceid = item.invoiceid),
+
+ peopleinfo AS (
+SELECT c.Firstname as client, e.Firstname as worker, Customerid, c.Country
+FROM Customers as c
+JOIN Employees as e
+ON c.Supportrepid = e.Employeeid)
+
+SELECT client, worker, Country, SUM(Unitprice*Quantity) as "Invoice total"
+FROM peopleinfo as p
+JOIN invoiceinfo as info
+ON p.Customerid = info.Customerid
+GROUP BY invoiceid
+
+
+#8.-How many Invoices were there in 2009?
+
+#9.-What are the total sales for 2009?
+
+#10.- Write a query that includes the purchased track name with each invoice line item.
+
+#11.-Write a query that includes the purchased track name AND artist name with each invoice line item.
+
+#12.-Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+
+#13.-Show the total sales made by each sales agent.
+
+#14.-Which sales agent made the most in sales in 2009?
