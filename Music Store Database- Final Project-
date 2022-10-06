@@ -165,7 +165,7 @@ JOIN Invoices as i
 ON p.Customerid = i.Customerid
 GROUP BY name
 
-#14.-Which sales agent made the most in sales in 2009?
+#14.-Which sales agent made the most  sales in 2009?
 
 WITH people AS(
 SELECT e.Firstname as name, e.Lastname as lname, c.Customerid
