@@ -189,3 +189,33 @@ SELECT e.Firstname, e.Lastname, e.title as "Job Title" , s.Firstname as " Superv
 FROM employees as e
 LEFT JOIN employees as s
 ON e.reportsto = s.employeeid
+
+#16.- Customer's employer arrenged by popularity
+
+#17.- Country with the most sales
+
+#18.- Average total sales by employee
+
+#19.- Top 3 best seller songs per Country
+
+#20.- Percentage of sales by employeed vs unemployed customers
+
+#21.- top 2 best seller songs by Genre
+
+#22.- Number of people under each Manager
+
+#23.- Number of tracks per album including album name, no. of tracks and artist name
+
+#24.- Total Cost of each album (album name plus cost)
+
+#25.- Display tracks with higher than average sales as "popular", close to average as "average" and under average as "unpopular"
+
+#26.- All tracks showing name of the track, name of the playlist it belongs too, no. tracks of that playlist.
+
+#27.- Artist names with the total of albums available and total of tracks.
+
+#28.- Artist names and their total of sales (number of sales and total amount)
+
+#29.- Albums arrenged from top seller to lowest sales
+
+#30.- Composer name arrenged by Genre, Total Sales and number of tracks
