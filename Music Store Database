@@ -153,4 +153,39 @@ on a.Albumid = info.Albumid
 
 #13.-Show the total sales made by each sales agent.
 
+WITH people AS(
+SELECT e.Firstname as name, e.Lastname as lname, c.Customerid
+FROM Employees as e
+JOIN Customers as c
+ON e.employeeid = c.SupportRepid)
+
+Select name, Lname, COUNT(Invoiceid) as "Total sales"
+FROM people as p
+JOIN Invoices as i
+ON p.Customerid = i.Customerid
+GROUP BY name
+
 #14.-Which sales agent made the most in sales in 2009?
+
+WITH people AS(
+SELECT e.Firstname as name, e.Lastname as lname, c.Customerid
+FROM Employees as e
+JOIN Customers as c
+ON e.employeeid = c.SupportRepid)
+
+Select name, Lname, COUNT(Invoiceid) as totalsales
+FROM people as p
+JOIN Invoices as i
+ON p.Customerid = i.Customerid
+WHERE InvoiceDate LIKE '%2009%'
+GROUP BY name
+ORDER BY totalsales DESC
+LIMIT 1
+
+
+#15-. List all employees along side their supervisors. (Self-reference)
+
+SELECT e.Firstname, e.Lastname, e.title as "Job Title" , s.Firstname as " Supervisor" , s.title as "Supervisor Title"
+FROM employees as e
+LEFT JOIN employees as s
+ON e.reportsto = s.employeeid
