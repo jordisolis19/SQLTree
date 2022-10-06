@@ -1,5 +1,5 @@
 ### In this project I used a Music Databse with 11 tables, each table with different conection to each-other. Then using SQLlite I solved for different query's
-(found bellow) utilizing joins, aggregates and many other SQL functions. ###
+(found bellow) utilizing joins, aggregates and many other SQL functions.  This served as my final proyect for my SQL certificate###
 
 
 #1.-Find Customers (their full names, customer ID, and country) who are not in the US. 
