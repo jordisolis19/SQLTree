@@ -434,7 +434,7 @@ from astronauts
 group by Name Having Space_Flight_hr+Space_Walks_hr> 10000 or Space_Flights+Space_Walks> 15 ; 
 
 
-// Austronauts witht he most of both Flight and Spacewalk expirience.
+// Austronauts with the most of both Flight and Spacewalk expirience.
 
 Select Name, Space_Flight_hr,Space_Flights, Space_Walks_hr, Space_Walks 
 from astronauts 
