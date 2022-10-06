@@ -60,7 +60,7 @@ WITH invoiceinfo AS (
 SELECT * 
 FROM Invoices as inv
 JOIN Invoice_items as item
-ON inv.invoiceid = item.invoiceid),
+ON inv.invoiceid = item.invoicelineid),
 
  peopleinfo AS (
 SELECT c.Firstname as client, e.Firstname as worker, Customerid, c.Country
@@ -77,11 +77,59 @@ GROUP BY invoiceid
 
 #8.-How many Invoices were there in 2009?
 
+SELECT count(invoiceid)
+FROM Invoices
+WHERE InvoiceDate LIKE '%2009%'
+
+
 #9.-What are the total sales for 2009?
+
+SELECT SUM (quantity * Unitprice)
+FROM invoices as i
+JOIN invoice_items as item
+ON i.invoiceid = item.invoicelineid
+WHERE InvoiceDate LIKE '%2009%'
+
 
 #10.- Write a query that includes the purchased track name with each invoice line item.
 
+WITH invoiceinfo AS( 
+SELECT i.Invoiceid, Trackid
+FROM Invoices as i
+JOIN Invoice_items as item
+ON i.invoiceid = item.invoicelineid)
+
+Select Invoiceid, Name
+FROM invoiceinfo 
+JOIN Tracks
+ON Tracks.trackid = invoiceinfo.trackid
+
+
 #11.-Write a query that includes the purchased track name AND artist name with each invoice line item.
+
+WITH invoiceinfo AS( 
+SELECT i.Invoiceid, Trackid
+FROM Invoices as i
+JOIN Invoice_items as item
+ON i.invoiceid = item.invoiceLineid),
+
+songinfo AS(
+SELECT  tr.Trackid, a.Artistid, tr.name
+FROM Albums as a
+JOIN Tracks as tr
+ON a.Albumid = tr.Albumid),
+
+totalinfo AS (
+SELECT invoiceid, name as song, Artistid
+FROM songinfo as s
+JOIN invoiceinfo as info
+ON info.trackid = s.trackid)
+
+SELECT song, name artist, invoiceid
+FROM artists as art
+JOIN totalinfo as total
+ON art.Artistid = total.Artistid
+
 
 #12.-Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
 
