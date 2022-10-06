@@ -133,6 +133,24 @@ ON art.Artistid = total.Artistid
 
 #12.-Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
 
+WITH trackmedia AS (
+SELECT t.name,  t.Genreid, t.Albumid, m.name as media
+FROM Tracks as t
+JOIN Media_types as m
+on t.Mediatypeid = m.Mediatypeid),
+
+musicinfo AS (
+SELECT tm.name, media, Albumid, g.name as genre
+FROM trackmedia as tm
+JOIN Genres as g
+ON tm.Genreid = g.Genreid)
+
+SELECT Name "Song" , Media, Genre, Title as "Album"
+FROM musicinfo as info
+JOIN Albums as a
+on a.Albumid = info.Albumid
+
+
 #13.-Show the total sales made by each sales agent.
 
 #14.-Which sales agent made the most in sales in 2009?
