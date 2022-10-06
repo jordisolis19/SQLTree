@@ -2,7 +2,7 @@
 (found bellow) utilizing joins, aggregates and many other SQL functions.  This served as my final proyect for my SQL certificate###
 
 
-#1.-Find Customers (their full names, customer ID, and country) who are not in the US. 
+#1.-Find Customers (their full names, customer ID, and country) who are not in the US.  -
 
 SELECT Firstname, LastName, Customerid, Country
 FROM customers
@@ -10,14 +10,14 @@ WHERE Country != "USA"
 ORDER BY Country
 
 
-#2.-Show only the Customers from Brazil.
+#2.-Show only the Customers from Brazil. -
 
 SELECT Firstname, LastName, Customerid, Country
 FROM customers
 WHERE Country = "Brazil"
 
 
-#3.-Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+#3.-Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country. -
 
 SELECT Firstname, Lastname, Invoiceid, Invoicedate, Country
 FROM customers as c
@@ -27,20 +27,20 @@ WHERE Country = "Brazil"
 Order by invoiceid
 
 
-#4.-Show the Employees who are Sales Agents.
+#4.-Show the Employees who are Sales Agents. -
 
 SELECT Employeeid, Firstname, Lastname, Title
 from EMPLOYEES
 WHERE Title LIKE '%sales%'
 
 
-#5.-Create a  list of countries we've worked for from the Invoice table.
+#5.-Create a  list of countries we've worked for from the Invoice table. -
 
 SELECT BillingCountry
 FROM Invoices
 Group by BillingCountry
 
-#6.-Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+#6.-Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name. -
 
 WITH Salebyemployee AS (
 SELECT SupportRepid, invoiceid
@@ -54,7 +54,7 @@ JOIN Salebyemployee as s
 ON e.Employeeid = s.SupportRepid
 
 
-#7.-Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+#7.-Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers. -
 
 WITH invoiceinfo AS (
 SELECT * 
@@ -75,14 +75,14 @@ ON p.Customerid = info.Customerid
 GROUP BY invoiceid
 
 
-#8.-How many Invoices were there in 2009?
+#8.-How many Invoices were there in 2009? -
 
 SELECT count(invoiceid)
 FROM Invoices
 WHERE InvoiceDate LIKE '%2009%'
 
 
-#9.-What are the total sales for 2009?
+#9.-What are the total sales for 2009? -
 
 SELECT SUM (quantity * Unitprice)
 FROM invoices as i
@@ -91,7 +91,7 @@ ON i.invoiceid = item.invoicelineid
 WHERE InvoiceDate LIKE '%2009%'
 
 
-#10.- Write a query that includes the purchased track name with each invoice line item.
+#10.- Write a query that includes the purchased track name with each invoice line item. -
 
 WITH invoiceinfo AS( 
 SELECT i.Invoiceid, Trackid
@@ -105,7 +105,7 @@ JOIN Tracks
 ON Tracks.trackid = invoiceinfo.trackid
 
 
-#11.-Write a query that includes the purchased track name AND artist name with each invoice line item.
+#11.-Write a query that includes the purchased track name AND artist name with each invoice line item. -
 
 WITH invoiceinfo AS( 
 SELECT i.Invoiceid, Trackid
@@ -131,7 +131,7 @@ JOIN totalinfo as total
 ON art.Artistid = total.Artistid
 
 
-#12.-Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+#12.-Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre. -
 
 WITH trackmedia AS (
 SELECT t.name,  t.Genreid, t.Albumid, m.name as media
@@ -151,7 +151,7 @@ JOIN Albums as a
 on a.Albumid = info.Albumid
 
 
-#13.-Show the total sales made by each sales agent.
+#13.-Show the total sales made by each sales agent. -
 
 WITH people AS(
 SELECT e.Firstname as name, e.Lastname as lname, c.Customerid
@@ -165,7 +165,7 @@ JOIN Invoices as i
 ON p.Customerid = i.Customerid
 GROUP BY name
 
-#14.-Which sales agent made the most  sales in 2009?
+#14.-Which sales agent made the most  sales in 2009? -
 
 WITH people AS(
 SELECT e.Firstname as name, e.Lastname as lname, c.Customerid
@@ -183,39 +183,137 @@ ORDER BY totalsales DESC
 LIMIT 1
 
 
-#15-. List all employees along side their supervisors. (Self-reference)
+#15-. List all employees along side their supervisors. (Self-reference)-
 
 SELECT e.Firstname, e.Lastname, e.title as "Job Title" , s.Firstname as " Supervisor" , s.title as "Supervisor Title"
 FROM employees as e
 LEFT JOIN employees as s
 ON e.reportsto = s.employeeid
 
-#16.- Customer's employer arrenged by popularity
+#16.- Customer's employer arrenged by popularity -
 
-#17.- Country with the most sales
+SELECT Company,  Count(company)
+FROM customers
+WHERE company is not NULL
+GROUP BY Company
 
-#18.- Average total sales by employee
 
-#19.- Top 3 best seller songs per Country
+#17.- Country with the most sales outside of the USA -
 
-#20.- Percentage of sales by employeed vs unemployed customers
+SELECT COUNT(INVOICEID) , BillingCountry
+FROM Invoices
+WHERE BillingCountry IS NOT "USA"
+GROUP BY BillingCountry
+ORDER BY COUNT(INVOICEID) DESC
+LIMIT 1
 
-#21.- top 2 best seller songs by Genre
 
-#22.- Number of people under each Manager
+#18.- Average total sales by employee -
 
-#23.- Number of tracks per album including album name, no. of tracks and artist name
+WITH people AS(
+SELECT Invoiceid, Supportrepid
+FROM Invoices as i
+JOIN Customers as c
+ON i.customerid = c.customerid),
 
-#24.- Total Cost of each album (album name plus cost)
+employeenum AS( 
+SELECT Firstname as name, Supportrepid
+FROM people as p
+JOIN Employees as e
+ON p.Supportrepid = e.Employeeid
+GROUP BY Firstname)
 
-#25.- Display tracks with higher than average sales as "popular", close to average as "average" and under average as "unpopular"
+SELECT count(e.name)*100/(
+SELECT count(Invoiceid)
+FROM people), e.name
+FROM employeenum as e
+JOIN people as p
+ON p.Supportrepid = e.Supportrepid
+GROUP BY e.name
 
-#26.- All tracks showing name of the track, name of the playlist it belongs too, no. tracks of that playlist.
 
-#27.- Artist names with the total of albums available and total of tracks.
 
-#28.- Artist names and their total of sales (number of sales and total amount)
+#19.- Number of people under each Manager
 
-#29.- Albums arrenged from top seller to lowest sales
+SELECT  b.Firstname, b.Lastname , COUNT (b.Firstname) as "Employees"
+FROM employees as a
+Join employees as b
+ON a.reportsto = b.employeeid
+GROUP BY b.Firstname
 
-#30.- Composer name arrenged by Genre, Total Sales and number of tracks
+
+#20.- Number of tracks per album including album name, no. of tracks and artist name
+
+WITH Albuminfo AS(
+SELECT title as Album, name as Artist, Albumid
+FROM Albums as a
+JOIN artists as art
+ON art.artistid = a.artistid
+GROUP BY title)
+
+SELECT Album, Artist, Count(name) as "Number of songs"
+FROM Albuminfo as a
+JOIN tracks as t
+ON t.Albumid = a.Albumid
+Group by Album
+Order by Count(name) Desc
+
+
+#21.- Total Cost of each album (album name plus cost)
+
+WITH music as (SELECT Title, a.Albumid, trackid
+FROM Albums as a
+JOIN Tracks as t
+On a.Albumid = t.Albumid)
+
+SELECT Title, SUM(Unitprice) as price
+FROM music as m
+JOIN invoice_items as i
+ON i.trackid = m.trackid
+GROUP BY Title
+ORDER by price DESC
+
+
+#22.- All tracks showing name of the track, name of the playlist it belongs too, no. tracks of that playlist.
+
+WITh music as (SELECT name as songs, p.trackid, Playlistid
+FROM tracks as t
+JOIN playlist_track as p
+ON p.trackid = t.trackid),
+
+playlist as (SELECT p.playlistid, name, COUnt(trackid) as counted
+FROM playlists as p
+JOIN playlist_track as pt
+ON p.playlistid = pt.playlistid
+group by name)
+
+SELECT songs, name, counted
+FROM music as m
+JOIN playlist as p
+ON m.playlistid = p.playlistid
+
+
+#23.- Artist names and their total of sales (number of sales and total amount)
+
+WITH artist_album as(
+SELECT Name as Artist, Albumid as Album
+FROM artists as a
+JOIN albums as al
+ON a.artistid = al.artistid),
+
+trackinfo as (
+SELECT Artist, Trackid
+FROM artist_album as a
+JOIN tracks as t
+ON a.album = t.albumid)
+
+SELECT  Artist, SUM(quantity * Unitprice) as "Total Sales"
+FROM trackinfo as t
+JOIN invoice_items as i
+ON t.trackid = i.trackid
+GROUP BY Artist
+ORDER BY SUM(quantity * Unitprice) DESC
+
+
+
+
