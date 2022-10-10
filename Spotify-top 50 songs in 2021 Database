@@ -1,8 +1,8 @@
-# For this project, I downloaded Spotify data from Kaggle.
-# Then I created a table to insert Spotify data into.
-# Finally, I performed analytics on the data using SQL. 
+## For this project, I downloaded Spotify data from Kaggle then I created a table to insert Spotify data into.
+Finally, I performed analytics on the data using SQL. ##
 
-#Creating the table: 
+# Creating the table: #
+
 CREATE TABLE BIT_DB.Spotifydata (
 id integer PRIMARY KEY,
 artist_name varchar NOT NULL,
@@ -24,9 +24,8 @@ duration_ms integer NOT NULL,
 time_signature integer NOT NULL 
 )
 
-#Then I inserted the Spotify Data .csv into the table.
-
-#Next, I explored the data using the following SQL. 
+# Then I inserted the Spotify Data .csv into the table.
+ Next, I explored the data using the following SQL. #
 
 1- Most popular song
 
@@ -112,8 +111,8 @@ GROUP BY s.artist_name
 )
  
 SELECT  artist_name,
-        average_popularity,
-        'Top Star' AS tag
+average_popularity,
+'Top Star' AS tag
 FROM popularity_average_CTE
 WHERE average_popularity>=90
 ORDER BY average_popularity DESC;
