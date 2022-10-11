@@ -1,4 +1,6 @@
-//Data Base
+## Downloaded a Kaggle Database with Astronaut information. I first created a table and then uploaded the relevant data to solve different queries using SQL ##
+
+#Table Creation#
 
 CREATE TABLE astronauts(
    Name                TEXT PRIMARY KEY,
@@ -21,6 +23,8 @@ CREATE TABLE astronauts(
    Death_Date          TEXT, 
    Death_Mission       TEXT
 );
+
+# Data #
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('Joseph M. Acaba',2004,19,'Active','5/17/1967','Inglewood, CA','Male','University of California-Santa Barbara; University of Arizona','Geology','Geology',NULL,NULL,2,3307,2,13,'STS-119 (Discovery), ISS-31/32 (Soyuz)',NULL,NULL);
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('Loren W. Acton',NULL,NULL,'Retired','3/7/1936','Lewiston, MT','Male','Montana State University; University of Colorado','Engineering Physics','Solar Physics',NULL,NULL,1,190,0,0,'STS 51-F (Challenger)',NULL,NULL);
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('James C. Adamson',1984,10,'Retired','3/3/1946','Warsaw, NY','Male','US Military Academy; Princeton University','Engineering','Aerospace Engineering','Colonel','US Army (Retired)',2,334,0,0,'STS-28 (Columbia), STS-43 (Atlantis)',NULL,NULL);
@@ -380,7 +384,7 @@ INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,A
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('George D. Zamka',1998,17,'Retired','6/29/1962','Jersey City, NJ','Male','US Naval Academy; Florida Institute of Technology','Mathematics','Engineering Management','Colonel','US Marine Corps (Retired)',2,692,0,0,'STS-120 (Discovery), STS-130 (Endeavor)',NULL,NULL);
 
 
-//Query showcasing what percentage of astronauts belong to each possible "status" category
+1.- show what percentage of astronauts belong to each possible "status" category
 
 SELECT COUNT(*)*100/350,
     CASE
@@ -392,49 +396,49 @@ SELECT COUNT(*)*100/350,
 FROM astronauts GROUP BY "status_percentages";
 
 
-//This query displays the cities with the most Austronauts
+2.- cities with the most Austronauts
 
 select count(Birth_Place) as"Cities with the most austronauts" ,Birth_place
 FROM astronauts 
 GROUP BY Birth_Place Having count(birth_place)>4 ;
 
 
-//This query displays the Universities with the most Austronauts
+3.- Universities with the most Austronauts
 
-select count(Alma_Mater) as"Universities with the most austronauts" ,Alma_Mater
+Select count(Alma_Mater) as"Universities with the most austronauts" ,Alma_Mater
 FROM astronauts
 GROUP BY Alma_Mater Having count(Alma_Mater)>4 ;
 
 
-//This query showcases what percentage of Astronauts belongs to each Gender.
+4.- What percentage of Astronauts belongs to each Gender.
 
 SELECT COUNT(*)*100/357,
-    CASE
+ CASE
        WHEN Gender = "Male" Then "male_astronauts"
        ELSE "female_astronauts"
         end as "gender_percentages"
 FROM astronauts GROUP BY "gender_percentages";
 
 
-// Austronaut with the most flight expirience
+5.- Austronaut with the most flight expirience
 
 SELECT Name, MAX (Space_Flight_hr),MAX (Space_Flights) 
 FROM astronauts;
 
 
-// Austronaut with the most spacewalk expirience
+6.-Austronaut with the most spacewalk expirience
 
 SELECT Name, MAX (Space_Walks_hr),MAX (Space_Walks)
 FROM astronauts;
 
-//List of Austronauts witht he most Flight or Spacewalk expirience
+7.- List of Austronauts witht he most Flight or Spacewalk expirience
 
 Select Name, Space_Flight_hr,Space_Flights, Space_Walks_hr, Space_Walks 
 from astronauts  
 group by Name Having Space_Flight_hr+Space_Walks_hr> 10000 or Space_Flights+Space_Walks> 15 ; 
 
 
-// Austronauts with the most of both Flight and Spacewalk expirience.
+8.- Austronauts with the most of both Flight and Spacewalk expirience.
 
 Select Name, Space_Flight_hr,Space_Flights, Space_Walks_hr, Space_Walks 
 from astronauts 
