@@ -1,4 +1,6 @@
-// Author Data Base
+Author Data Base
+
+## Manually created a database of fantasy authors to later analize by using the queries found below ##
 
 CREATE TABLE author(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -252,7 +254,7 @@ INSERT INTO books (name, series_id, author_id) VALUES ("	Career of Evil" ,11,7);
 INSERT INTO books (name, series_id, author_id) VALUES ("	Lethal White" ,11,7);
 INSERT INTO books (name, series_id, author_id) VALUES ("Troubled Blood" ,11,7);
 
-//Number of total books published per Author
+1.- Number of total books published per Author
 
 SELECT n.fullname, COUNT(books.name) as "All Books Published"
 FROM author as n
@@ -261,7 +263,7 @@ ON n.id = books.author_id
 GROUP BY n.fullname 
 ORDER BY COUNT(books.name) DESC;
 
-// Series of books written by an author along witht he number of books within each series.
+2.- Series of books written by an author along witht he number of books within each series.
 
 SELECT a.fullname as "Author", s.name as "Series Name", COUNT(s.name) as"Number of books in series", s.date
 FROM books as b
@@ -272,7 +274,7 @@ ON b.series_id = s.id
 GROUP BY s.name
 ORDER BY a.fullname;
 
-// Total of books written that belong to a series and total of standalone books arranged by Author
+3.- Total of books written that belong to a series and total of standalone books arranged by Author
 
 Select  fullname, count(fullname) as "number of books",
 CASE
@@ -285,7 +287,7 @@ ON b.author_id = a.id
 GROUP BY bibliography, A.FULLNAME
 ORDER BY a.fullname;
 
-//Authors matched by other authors that inspired them within this Database. 
+4.- Authors matched by other authors that inspired them within this Database. 
 
 SELECT a.fullname as "Author", b.fullname as "Inspiration"
 FROM author as a
