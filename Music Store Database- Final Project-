@@ -1,5 +1,5 @@
-### In this project I used a Music Databse with 11 tables, each table with different conection to each-other. Then using SQLlite I solved for different query's
-(found bellow) utilizing joins, aggregates and many other SQL functions.  This served as my final proyect for my SQL certificate###
+### In this project, I used a Music Database with 11 tables, each table with different related fields. 
+Then using SQLlite I solved different queries utilizing joins, aggregates, and other SQL functions.  This served as my final project for my SQL certificate  ##
 
 
 #1.-Find Customers (their full names, customer ID, and country) who are not in the US.  -
@@ -62,7 +62,7 @@ FROM Invoices as inv
 JOIN Invoice_items as item
 ON inv.invoiceid = item.invoicelineid),
 
- peopleinfo AS (
+peopleinfo AS (
 SELECT c.Firstname as client, e.Firstname as worker, Customerid, c.Country
 FROM Customers as c
 JOIN Employees as e
