@@ -1,6 +1,6 @@
 Author Data Base
 
-## Manually created a database of fantasy authors to later analize by using the queries found below ##
+## Manually created a database of fantasy authors to later analyze by using the queries found below ##
 
 CREATE TABLE author(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
